@@ -1,27 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="570.0" prefWidth="688.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controllers.demandeSangController">
+<AnchorPane prefHeight="500.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controllers.DemandeSangController">
    <children>
-      <Label layoutX="46.0" layoutY="89.0" text="numero demande" />
-      <Label layoutX="49.0" layoutY="144.0" text="nom demandeur" />
-      <Label layoutX="54.0" layoutY="202.0" text="nom recepteur" />
-      <Label layoutX="55.0" layoutY="266.0" text="date demande" />
-      <Label layoutX="51.0" layoutY="326.0" text="groupe sanguin" />
-      <Label layoutX="62.0" layoutY="387.0" text="nombre sac" />
-      <Label layoutX="67.0" layoutY="445.0" text="remarque" />
-      <Label layoutX="73.0" layoutY="506.0" text="objectif" />
-      <TextField fx:id="numeroDemandeField" layoutX="171.0" layoutY="85.0" />
-      <TextField fx:id="nomDemandeurField" layoutX="171.0" layoutY="140.0" />
-      <TextField fx:id="nomRecepteurField" layoutX="171.0" layoutY="198.0" />
-      <TextField fx:id="dateDemandeField" layoutX="171.0" layoutY="262.0" />
-      <TextField fx:id="groupeSanguinField" layoutX="171.0" layoutY="322.0" />
-      <TextField fx:id="nombreSacField" layoutX="171.0" layoutY="383.0" />
-      <TextField fx:id="remarqueField" layoutX="171.0" layoutY="441.0" />
-      <TextField fx:id="objectifField" layoutX="171.0" layoutY="502.0" />
-      <Button layoutX="550.0" layoutY="501.0" mnemonicParsing="false" onAction="#ajouterDemandeButtonClicked" prefHeight="26.0" prefWidth="80.0" text="Ajouter" />
-      <Button layoutX="431.0" layoutY="501.0" mnemonicParsing="false" onAction="#retourButtonClicked" prefHeight="26.0" prefWidth="80.0" text="Retour" />
+      <Button layoutX="37.0" layoutY="441.0" mnemonicParsing="false" onAction="#Retourner" text="Retour" />
+      <TableView fx:id="TabDmdOrganisationDons" layoutX="265.0" layoutY="119.0" prefHeight="262.0" prefWidth="470.0">
+        <columns>
+          <TableColumn fx:id="Demandeur" prefWidth="100.00001525878906" text="Demande par" />
+          <TableColumn fx:id="NomDest" prefWidth="106.39996337890625" text="Nom destinataire" />
+            <TableColumn fx:id="DateDmd" minWidth="0.0" prefWidth="112.0" text="Date demande" />
+            <TableColumn fx:id="grpSang" prefWidth="81.60003662109375" text="Groupe Sang" />
+            <TableColumn fx:id="objectif" prefWidth="68.7999267578125" text="Objectif" />
+        </columns>
+      </TableView>
+      <Label layoutX="176.0" layoutY="14.0" text="Reception des Demandes Organisation de Dons">
+         <font>
+            <Font name="System Bold Italic" size="18.0" />
+         </font>
+      </Label>
+      <Button layoutX="383.0" layoutY="393.0" mnemonicParsing="false" onAction="#AccepterDmd" text="Accepter" />
+      <Button layoutX="537.0" layoutY="393.0" mnemonicParsing="false" onAction="#RefuserDmd" text="Refuser" />
+      <Label layoutX="13.0" layoutY="61.0" text="Information demande organisation don :" />
+      <Label layoutX="23.0" layoutY="122.0" text="Demande par :" />
+      <Label layoutX="24.0" layoutY="304.0" text="Objectif :" />
+      <Label layoutX="23.0" layoutY="212.0" text="Groupe Sang:" />
+      <Label layoutX="23.0" layoutY="182.0" text="Date demande :" />
+      <Label layoutX="23.0" layoutY="149.0" text="Nom destinataire :" />
+      <TextField fx:id="demandeur" layoutX="107.0" layoutY="117.0" prefHeight="18.0" prefWidth="112.0" />
+      <TextField fx:id="nomDestinataire" layoutX="129.0" layoutY="145.0" prefHeight="18.0" prefWidth="112.0" />
+      <TextField fx:id="Objectif" layoutX="80.0" layoutY="302.0" prefHeight="41.0" prefWidth="150.0" />
+      <DatePicker fx:id="dateDemande" layoutX="120.0" layoutY="178.0" prefHeight="18.0" prefWidth="112.0" />
+      <Button layoutX="121.0" layoutY="389.0" mnemonicParsing="false" onAction="#AjouterDmd" text="Ajouter Demande" />
+      <Button layoutX="375.0" layoutY="70.0" mnemonicParsing="false" onAction="#Rechercher" text="Rechercher" />
+      <TextField fx:id="rechercheField" layoutX="463.0" layoutY="70.0" prefHeight="26.0" prefWidth="190.0" promptText="entrer le nom du demandeur" />
+      <Label layoutX="23.0" layoutY="96.0" text="Numero Demande :" />
+      <TextField fx:id="Control_num" layoutX="141.0" layoutY="92.0" prefHeight="18.0" prefWidth="112.0" />
+      <TextField fx:id="GroupeSang" layoutX="120.0" layoutY="208.0" prefHeight="18.0" prefWidth="112.0" />
+      <Label layoutX="23.0" layoutY="240.0" text="Nombre de Sac Sang :" />
+      <Label layoutX="23.0" layoutY="268.0" text="Remarque :" />
+      <TextField fx:id="Rmq" layoutX="89.0" layoutY="264.0" prefHeight="26.0" prefWidth="138.0" />
+      <TextField fx:id="NbSac" layoutX="152.0" layoutY="237.0" prefHeight="26.0" prefWidth="48.0" />
    </children>
 </AnchorPane>
