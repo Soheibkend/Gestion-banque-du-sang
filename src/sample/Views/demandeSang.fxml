@@ -1,13 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.DatePicker?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
 <AnchorPane prefHeight="500.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controllers.DemandeSangController">
    <children>
@@ -37,7 +32,6 @@
       <TextField fx:id="demandeur" layoutX="107.0" layoutY="117.0" prefHeight="18.0" prefWidth="112.0" />
       <TextField fx:id="nomDestinataire" layoutX="129.0" layoutY="145.0" prefHeight="18.0" prefWidth="112.0" />
       <TextField fx:id="Objectif" layoutX="80.0" layoutY="302.0" prefHeight="41.0" prefWidth="150.0" />
-      <DatePicker fx:id="dateDemande" layoutX="120.0" layoutY="178.0" prefHeight="18.0" prefWidth="112.0" />
       <Button layoutX="121.0" layoutY="389.0" mnemonicParsing="false" onAction="#AjouterDmd" text="Ajouter Demande" />
       <Button layoutX="375.0" layoutY="70.0" mnemonicParsing="false" onAction="#Rechercher" text="Rechercher" />
       <TextField fx:id="rechercheField" layoutX="463.0" layoutY="70.0" prefHeight="26.0" prefWidth="190.0" promptText="entrer le nom du demandeur" />
@@ -48,5 +42,6 @@
       <Label layoutX="23.0" layoutY="268.0" text="Remarque :" />
       <TextField fx:id="Rmq" layoutX="89.0" layoutY="264.0" prefHeight="26.0" prefWidth="138.0" />
       <TextField fx:id="NbSac" layoutX="152.0" layoutY="237.0" prefHeight="26.0" prefWidth="48.0" />
+      <TextField fx:id="dateDemande" layoutX="123.0" layoutY="177.0" prefHeight="26.0" prefWidth="124.0" />
    </children>
 </AnchorPane>

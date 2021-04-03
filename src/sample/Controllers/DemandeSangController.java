@@ -11,13 +11,12 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
-import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-import src.sample.DB.DBCONNECTION;
+import sample.DB.DBCONNECTION;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -27,29 +26,27 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
+import sample.Classes.DemandeSang;
 
-import application.models.DemandeSang;
-import sample.Classes.demandeSang;
-
-public class demandeSangController implements Initializable {
+public class DemandeSangController implements Initializable {
 
 	 @FXML
-	    private TableView<demandeSang> TabDmdOrganisationDons;
+	    private TableView<DemandeSang> TabDmdOrganisationDons;
 
 	    @FXML
-	    private TableColumn<demandeSang, String> Demandeur;
+	    private TableColumn<DemandeSang, String> Demandeur;
 
 	    @FXML
-	    private TableColumn<demandeSang, String> NomDest;
+	    private TableColumn<DemandeSang, String> NomDest;
 
 	    @FXML
-	    private TableColumn<demandeSang, LocalDate> DateDmd;
+	    private TableColumn<DemandeSang, String> DateDmd;
 	    
 	    @FXML
-	    private TableColumn<demandeSang, String> grpSang;
+	    private TableColumn<DemandeSang, String> grpSang;
 
 	    @FXML
-	    private TableColumn<demandeSang, String> objectif;
+	    private TableColumn<DemandeSang, String> objectif;
 	    
 	    @FXML
 	    private TextField demandeur;
@@ -61,7 +58,7 @@ public class demandeSangController implements Initializable {
 	    private TextField Objectif;
 
 	    @FXML
-	    private DatePicker dateDemande;
+	    private TextField dateDemande;
 	    
 	    @FXML
 	    private TextField GroupeSang;
@@ -82,11 +79,11 @@ public class demandeSangController implements Initializable {
 		private Statement stmt = null;
 		private ResultSet rs = null;
 		
-		private ObservableList<demandeSang> listeDmdSang = FXCollections.observableArrayList();
+		private ObservableList<DemandeSang> listeDmdSang = FXCollections.observableArrayList();
 
 
   public void Retourner (ActionEvent event) throws IOException {
-      Stage stage = (Stage) objectifField.getScene().getWindow();
+      Stage stage = (Stage) Rmq.getScene().getWindow();
       FXMLLoader loader = new FXMLLoader();
       loader.setLocation(getClass().getResource("/sample/Views/gestionDons.fxml"));
       Parent root = loader.load();
@@ -98,11 +95,11 @@ public class demandeSangController implements Initializable {
   void Rechercher(ActionEvent event) {
   	String DmdR = rechercheField.getText();
   	try {
-			rs = stmt.executeQuery("select * from DemandeSang where nomdemandeur = "+DmdR);
+			rs = stmt.executeQuery("select * from DemandeSang where nomdemandeur = '"+DmdR+"'");
 			
-			ObservableList<demandeSang> list = FXCollections.observableArrayList();
+			ObservableList<DemandeSang> list = FXCollections.observableArrayList();
 			if(rs.next()) {
-				list.add(new demandeSang(rs.getInt("numeroDemande"), rs.getString("nomdemandeur"), rs.getString("nomDestinataire"), rs.getDate("dateDemande").toLocalDate(), rs.getString("GroupeSanguin"), rs.getInt("NOMBRESAC"), rs.getString("REMARQUE"), rs.getString("Objectif")));
+				list.add(new DemandeSang(rs.getString("numeroDemande"), rs.getString("nomdemandeur"), rs.getString("nomDestinataire"), rs.getString("dateDemande"), rs.getString("GroupeSanguin"), rs.getInt("NOMBRESAC"), rs.getString("REMARQUE"), rs.getString("Objectif")));
 				TabDmdOrganisationDons.setItems(list);
 			
 			} else {
@@ -142,7 +139,7 @@ public class demandeSangController implements Initializable {
                   alert2.showAndWait();
               } else {
 
-                  DBCONNECTION.addDemandeSang(Control_num.getText(), demandeur.getText(),nomDestinataire.getText(), ""+dateDemande.getValue(), GroupeSang.getText(), Integer.parseInt(NbSac.getText()),Rmq.getText(), Objectif.getText());
+                  DBCONNECTION.addDemandeSang(Control_num.getText(), demandeur.getText(),nomDestinataire.getText(), ""+dateDemande.getText(), GroupeSang.getText(), Integer.parseInt(NbSac.getText()),Rmq.getText(), Objectif.getText());
                   Alert alert1 = new Alert(Alert.AlertType.INFORMATION);
                   alert1.setTitle("Felecitation!");
                   alert1.setHeaderText(null);
@@ -155,7 +152,7 @@ public class demandeSangController implements Initializable {
   
   @FXML
   void AccepterDmd(ActionEvent event) throws IOException {
-  	demandeSang dmd = TabDmdOrganisationDons.getSelectionModel().getSelectedItem();
+  	DemandeSang dmd = TabDmdOrganisationDons.getSelectionModel().getSelectedItem();
   	if(dmd == null) {
   		Alert alert = new Alert(Alert.AlertType.INFORMATION);
            alert.setTitle("ERROR");
@@ -164,13 +161,13 @@ public class demandeSangController implements Initializable {
            alert.showAndWait();
   	} else {
           	 try {
-					rs = stmt.executeQuery("delete from DemandeSang where numeroDemande = "+dmd.getControl_num());
+					rs = stmt.executeQuery("delete from DemandeSang where numeroDemande = "+dmd.getNumeroDemande());
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
 	             
           	try {
-					rs = stmt.executeQuery("insert into DemandeSangAcc values("+dmd.getControl_num()+", '"+dmd.getDemandeur()+"', '"+dmd.getNomDestinataire()+"', '"+dmd.getDateDemande()+"', '"+dmd.getGrpSang()+"' , '"+dmd.getNombreSac()+"', '"+dmd.getRemarque()+"', '"+dmd.getObjectif()+"','"+LocalDate.now()+"')");
+					rs = stmt.executeQuery("insert into DemandeSangAcc values("+dmd.getNumeroDemande()+", '"+dmd.getNomDemandeur()+"', '"+dmd.getNomDestinataire()+"', '"+dmd.getDateDemande()+"', '"+dmd.getGroupeSanguin()+"' , "+Integer.valueOf(dmd.getNombreSac())+", '"+dmd.getRemarque()+"', '"+dmd.getObjectif()+"','"+LocalDate.now().toString()+"')");
 				} catch (SQLException e) {
 					e.printStackTrace();
 				} 
@@ -187,7 +184,7 @@ public class demandeSangController implements Initializable {
 
   @FXML
   void RefuserDmd(ActionEvent event) throws IOException {
-  	demandeSang dmd = TabDmdOrganisationDons.getSelectionModel().getSelectedItem();
+  	DemandeSang dmd = TabDmdOrganisationDons.getSelectionModel().getSelectedItem();
   	if(dmd == null) {
   		Alert alert = new Alert(Alert.AlertType.INFORMATION);
            alert.setTitle("ERROR");
@@ -196,13 +193,13 @@ public class demandeSangController implements Initializable {
            alert.showAndWait();
   	} else {
           	 try {
-					rs = stmt.executeQuery("delete from DemandeSang where numeroDemande = "+dmd.getControl_num());
+					rs = stmt.executeQuery("delete from DemandeSang where numeroDemande = "+dmd.getNumeroDemande());
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
           	 
           	 try {
-					rs = stmt.executeQuery("insert into DemandeSangRefus values("+dmd.getControl_num()+", '"+dmd.getDemandeur()+"', '"+dmd.getNomDestinataire()+"', '"+dmd.getDateDemande()+"', '"+dmd.getGrpSang()+"' , '"+dmd.getNombreSac()+"', '"+dmd.getRemarque()+"', '"+dmd.getObjectif()+"','"+LocalDate.now()+"')");
+					rs = stmt.executeQuery("insert into DemandeSangRefus values("+dmd.getNumeroDemande()+", '"+dmd.getNomDemandeur()+"', '"+dmd.getNomDestinataire()+"', '"+dmd.getDateDemande()+"', '"+dmd.getGroupeSanguin()+"' , "+Integer.valueOf(dmd.getNombreSac())+", '"+dmd.getRemarque()+"', '"+dmd.getObjectif()+"','"+LocalDate.now().toString()+"')");
 				} catch (SQLException e) {
 					e.printStackTrace();
 				} 
@@ -235,18 +232,18 @@ public class demandeSangController implements Initializable {
  			// requette pout recuperer la liste des demandes de sang de la BD
  			rs = stmt.executeQuery("select * from DemandeSang");
  			while(rs.next()) {
- 				listeDmdSang.add(new demandeSang(rs.getString("numeroDemande"), rs.getString("nomdemandeur"), rs.getString("nomDestinataire"), rs.getString("dateDemande"), rs.getString("GroupeSanguin"), rs.getInt("NOMBRESAC"), rs.getString("REMARQUE"), rs.getString("Objectif"))
+ 				listeDmdSang.add(new DemandeSang(rs.getString("numeroDemande"), rs.getString("nomdemandeur"), rs.getString("nomDestinataire"), rs.getString("dateDemande"), rs.getString("GroupeSanguin"), rs.getInt("NOMBRESAC"), rs.getString("REMARQUE"), rs.getString("Objectif"))
  						);
  			}
  		} catch (SQLException e) {
  			e.printStackTrace();
  		} 
  		
- 		Demandeur.setCellValueFactory(new PropertyValueFactory<>("demandeur"));
+ 		Demandeur.setCellValueFactory(new PropertyValueFactory<>("nomDemandeur"));
  		NomDest.setCellValueFactory(new PropertyValueFactory<>("nomDestinataire"));
  		DateDmd.setCellValueFactory(new PropertyValueFactory<>("dateDemande"));
- 		grpSang.setCellValueFactory(new PropertyValueFactory<>("GrpSang"));
- 		objectif.setCellValueFactory(new PropertyValueFactory<>("Objectif"));
+ 		grpSang.setCellValueFactory(new PropertyValueFactory<>("groupeSanguin"));
+ 		objectif.setCellValueFactory(new PropertyValueFactory<>("objectif"));
  		
  		TabDmdOrganisationDons.setItems(listeDmdSang);
  	}

@@ -34,7 +34,7 @@ public class DBCONNECTION {
 
         try {
             Connection con = getConnection();
-            rs = statement.executeQuery("select * FROM DEMANDESANG WHERE MATRICULE = '"+numeroDemande+"'");
+            rs = statement.executeQuery("select * FROM DEMANDESANG WHERE NUMERODEMANDE = '"+numeroDemande+"'");
             if (rs.next()){
                 return true;
             }
@@ -49,7 +49,7 @@ public class DBCONNECTION {
 
     public static void addDemandeSang (String numeroDemande, String nomDemandeur, String nomDestinataire, String dateDemande, String groupeSanguin, int nombreSac, String remarque, String objectif) {
         try {
-            statement.executeQuery("INSERT INTO DEMANDESANG"+"  VALUES ('" +numeroDemande + "','"+nomDemandeur+"','"+ nomDestinataire+ "','"+ dateDemande+"','"+groupeSanguin+"',"+ nombreSac+",'"+ remarque+"','"+objectif+"'");
+            statement.executeQuery("INSERT INTO DEMANDESANG"+"  VALUES ('" +numeroDemande + "','"+nomDemandeur+"','"+ nomDestinataire+ "','"+ dateDemande+"','"+groupeSanguin+"',"+ nombreSac+",'"+ remarque+"','"+objectif+"')");
         } catch (SQLException e) {
             e.printStackTrace();
         }

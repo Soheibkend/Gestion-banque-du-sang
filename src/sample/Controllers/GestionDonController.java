@@ -19,8 +19,13 @@ public class GestionDonController {
 
     }
 
-    public void demandeSangButtonClicked (ActionEvent event) {
-
+    public void demandeSangButtonClicked (ActionEvent event) throws IOException{
+        Stage stage = (Stage) retourButton.getScene().getWindow();
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/sample/Views/demandeSang.fxml"));
+        Parent root = loader.load();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
     }
 
     public void listeRVButtonClicked (ActionEvent event) {

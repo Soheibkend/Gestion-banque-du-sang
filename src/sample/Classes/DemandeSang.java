@@ -1,6 +1,6 @@
 package sample.Classes;
 
-public class demandeSang {
+public class DemandeSang {
 
     String numeroDemande;
     String nomDemandeur;
@@ -11,7 +11,7 @@ public class demandeSang {
     String Remarque;
     String objectif;
 
-    public demandeSang(String numeroDemande, String nomDemandeur, String nomDestinataire, String dateDemande, String groupeSanguin, int nombreSac, String remarque, String objectif) {
+    public DemandeSang(String numeroDemande, String nomDemandeur, String nomDestinataire, String dateDemande, String groupeSanguin, int nombreSac, String remarque, String objectif) {
         this.numeroDemande = numeroDemande;
         this.nomDemandeur = nomDemandeur;
         this.nomDestinataire = nomDestinataire;
@@ -20,6 +20,14 @@ public class demandeSang {
         this.nombreSac = nombreSac;
         Remarque = remarque;
         this.objectif = objectif;
+    }
+
+    public String getNumeroDemande() {
+        return numeroDemande;
+    }
+
+    public void setNumeroDemande(String numeroDemande) {
+        this.numeroDemande = numeroDemande;
     }
 
     public String getNomDemandeur() {
