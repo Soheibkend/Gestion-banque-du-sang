@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="423.0" prefWidth="558.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controllers.AjouterDonController">
+   <children>
+      <Label layoutX="25.0" layoutY="61.0" text="nom donneur" />
+      <Label layoutX="18.0" layoutY="126.0" prefHeight="18.0" prefWidth="88.0" text="groupe sanguin" />
+      <Label layoutX="43.0" layoutY="195.0" text="hopital" />
+      <Label layoutX="26.0" layoutY="268.0" text="nom medecin" />
+      <TextField fx:id="nomDonneur" layoutX="118.0" layoutY="57.0" />
+      <TextField fx:id="groupeSanguin" layoutX="118.0" layoutY="123.0" />
+      <TextField fx:id="hopital" layoutX="118.0" layoutY="191.0" />
+      <TextField fx:id="nomMedecin" layoutX="118.0" layoutY="264.0" />
+      <Button layoutX="127.0" layoutY="366.0" mnemonicParsing="false" onAction="#ajouterButtonClicked" prefHeight="26.0" prefWidth="88.0" text="Ajouter Don" />
+      <Button fx:id="retourButton" layoutX="322.0" layoutY="366.0" mnemonicParsing="false" onAction="#retourButtonClicked" prefHeight="26.0" prefWidth="88.0" text="Retour" />
+   </children>
+</AnchorPane>

@@ -1,4 +1,4 @@
-package src.sample.Controllers;
+package sample.Controllers;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -64,7 +64,7 @@ public class ReceptionDmdRVController implements Initializable {
 			
 			ObservableList<RV> list = FXCollections.observableArrayList();
 			if(rs.next()) {
-				list.add(new RV(rs.getInt("numeroRV"),rs.getString("nomDonneur"), rs.getString("GroupeSanguin"), rs.getString("dateRV"), rs.getString("hopital")));
+				list.add(new RV(rs.getString("numeroRV"),rs.getString("nomDonneur"), rs.getString("GroupeSanguin"), rs.getString("dateRV"), rs.getString("hopital")));
 				TabDemandeRV.setItems(list);
 			
 			} else {
@@ -172,7 +172,7 @@ public class ReceptionDmdRVController implements Initializable {
 			// requette pout recuperer la liste des demandes de sang de la BD
 			rs = stmt.executeQuery("select * from RV");
 			while(rs.next()) {
-				listeDmdRV.add(new RV(rs.getInt("numeroRV"),rs.getString("nomDonneur"), rs.getString("GroupeSanguin"), rs.getString("dateRV"), rs.getString("hopital"))
+				listeDmdRV.add(new RV(rs.getString("numeroRV"),rs.getString("nomDonneur"), rs.getString("GroupeSanguin"), rs.getString("dateRV"), rs.getString("hopital"))
 						);
 			}
 		} catch (SQLException e) {

@@ -4,6 +4,8 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import java.sql.*;
+import java.time.LocalDate;
+
 //"DESKTOP-HHPM41M"
 public class DBCONNECTION {
 
@@ -50,6 +52,14 @@ public class DBCONNECTION {
     public static void addDemandeSang (String numeroDemande, String nomDemandeur, String nomDestinataire, String dateDemande, String groupeSanguin, int nombreSac, String remarque, String objectif) {
         try {
             statement.executeQuery("INSERT INTO DEMANDESANG"+"  VALUES ('" +numeroDemande + "','"+nomDemandeur+"','"+ nomDestinataire+ "','"+ dateDemande+"','"+groupeSanguin+"',"+ nombreSac+",'"+ remarque+"','"+objectif+"')");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void addDon (String nomDonneur,String groupeSanguin , String hopital, String nomMedecin) {
+        try {
+            statement.executeUpdate("INSERT INTO COLLECTSANG"+"  Values ('" +nomDonneur + "','"+hopital+"','"+ groupeSanguin+ "','"+ nomMedecin+"','"+ LocalDate.now().toString() +"')");
         } catch (SQLException e) {
             e.printStackTrace();
         }
