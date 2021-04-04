@@ -59,7 +59,7 @@ public class DBCONNECTION {
 
     public static void addDon (String nomDonneur,String groupeSanguin , String hopital, String nomMedecin) {
         try {
-            statement.executeUpdate("INSERT INTO COLLECTSANG"+"  Values ('" +nomDonneur + "','"+hopital+"','"+ groupeSanguin+ "','"+ nomMedecin+"','"+ LocalDate.now().toString() +"')");
+            statement.executeUpdate("INSERT INTO COLLECTSANG"+" Values ('" +nomDonneur + "','"+hopital+"','"+ groupeSanguin+ "','"+ nomMedecin+"','"+ LocalDate.now().toString() +"')");
         } catch (SQLException e) {
             e.printStackTrace();
         }

@@ -1,4 +1,4 @@
-package src.sample.Classes;
+package sample.Classes;
 
 public class CollectSang {
 
