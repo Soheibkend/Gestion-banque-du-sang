@@ -2,7 +2,7 @@ package sample.Classes;
 
 public class RV {
 
-    int numeroRV;
+    String numeroRV;
     String nomDonneur;
     String groupeSanguin;
     String date ;
@@ -16,11 +16,11 @@ public class RV {
         this.date = date;
     }
 
-    public int getNumeroRV() {
+    public String getNumeroRV() {
         return numeroRV;
     }
 
-    public void setNumeroRV(int numeroRV) {
+    public void setNumeroRV(String numeroRV) {
         this.numeroRV = numeroRV;
     }
 
