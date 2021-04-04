@@ -3,9 +3,10 @@ package sample.Classes;
 public class RV {
 
     int numeroRV;
-    int nombreSac;
+    String nomDonneur;
     String groupeSanguin;
     String date ;
+    String hopital;
 
     public String getDate() {
         return date;
@@ -31,19 +32,28 @@ public class RV {
         this.groupeSanguin = groupeSanguin;
     }
 
-    public int getNombreSac() {
-        return nombreSac;
+    public String getNomDonneur() {
+        return nomDonneur;
     }
 
-    public void setNombreSac(int nombreSac) {
-        this.nombreSac = nombreSac;
+    public void setNomDonneur(String nomD) {
+        this.nomDonneur = nomD;
     }
 
-    public RV (int numeroRV, int nombreSac, String groupeSanguin , String date) {
+    public String getHopital() {
+		return hopital;
+	}
+
+	public void setHopital(String hopital) {
+		this.hopital = hopital;
+	}
+
+	public RV (int numeroRV, String nomDonneur, String groupeSanguin , String date, String hop) {
         this.numeroRV = numeroRV;
-        this.nombreSac = nombreSac;
+        this.nomDonneur = nomDonneur;
         this.groupeSanguin = groupeSanguin;
         this.date = date;
+        this.hopital = hop;
     }
 
 
