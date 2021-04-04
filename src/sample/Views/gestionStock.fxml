@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="472.0" prefWidth="746.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" >
+<AnchorPane prefHeight="472.0" prefWidth="746.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controllers.GestionStockController">
    <children>
       <Pane prefHeight="128.0" prefWidth="747.0" style="-fx-background-color: #B22222;">
          <children>
@@ -14,8 +14,8 @@
                </font>
             </Label>
          </children></Pane>
-      <Button layoutX="316.0" layoutY="179.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="115.0" text="Stock sang" />
-      <Button layoutX="316.0" layoutY="245.0" mnemonicParsing="false" text="Stock Sang Perime" />
-      <Button layoutX="316.0" layoutY="321.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="115.0" text="Retour" />
+      <Button layoutX="316.0" layoutY="179.0" mnemonicParsing="false" onAction="#stockSangButton" prefHeight="26.0" prefWidth="115.0" text="Stock sang" />
+      <Button layoutX="316.0" layoutY="245.0" mnemonicParsing="false" onAction="#stockSangPerime" text="Stock Sang Perime" />
+      <Button fx:id="retourButton" layoutX="316.0" layoutY="321.0" mnemonicParsing="false" onAction="#retourButtonClicked" prefHeight="26.0" prefWidth="115.0" text="Retour" />
    </children>
 </AnchorPane>
