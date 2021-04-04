@@ -33,13 +33,13 @@ public class ReceptionDmdRVController implements Initializable {
     private TableView<RV> TabDemandeRV;
 
     @FXML
-    private TableColumn<RV, Integer> col_NumRV;
+    private TableColumn<RV, String> col_NumRV;
 
     @FXML
     private TableColumn<RV, String> col_NomDonneur;
 
     @FXML
-    private TableColumn<RV, LocalDate> col_DateRV;
+    private TableColumn<RV, String> col_DateRV;
 
     @FXML
     private TableColumn<RV, String> col_grpSang;
