@@ -2,14 +2,32 @@ package sample.Classes;
 
 public class SangStocke {
 
+    int numeroSac;
     String groupeSanguin;
-    int nombreSac;
+    String hopital;
     String dateCollect;
 
-    public SangStocke(String groupeSanguin, int nombreSac, String dateCollect) {
+    public SangStocke(String groupeSanguin, int numeroSac, String dateCollect, String hopital) {
         this.groupeSanguin = groupeSanguin;
-        this.nombreSac = nombreSac;
+        this.numeroSac = numeroSac;
         this.dateCollect = dateCollect;
+        this.hopital = hopital;
+    }
+
+    public int getNumeroSac() {
+        return numeroSac;
+    }
+
+    public void setNumeroSac(int numeroSac) {
+        this.numeroSac = numeroSac;
+    }
+
+    public String getHopital() {
+        return hopital;
+    }
+
+    public void setHopital(String hopital) {
+        this.hopital = hopital;
     }
 
     public String getGroupeSanguin() {
@@ -20,13 +38,6 @@ public class SangStocke {
         this.groupeSanguin = groupeSanguin;
     }
 
-    public int getNombreSac() {
-        return nombreSac;
-    }
-
-    public void setNombreSac(int nombreSac) {
-        this.nombreSac = nombreSac;
-    }
 
     public String getDateCollect() {
         return dateCollect;
