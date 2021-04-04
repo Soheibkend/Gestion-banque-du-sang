@@ -13,6 +13,9 @@ import javafx.stage.Stage;
 import sample.DB.DBCONNECTION;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
 
 public class AjouterDonController {
 
@@ -30,6 +33,10 @@ public class AjouterDonController {
 
     @FXML
     TextField groupeSanguin;
+
+    private Connection connection=null;
+    private Statement stmt = null;
+    private ResultSet rs = null;
 
 
     public void retourButtonClicked (ActionEvent event) throws IOException {
@@ -54,8 +61,8 @@ public class AjouterDonController {
                 alert1.setHeaderText(null);
                 alert1.setContentText("ajout fait avec succes");
                 alert1.showAndWait();
-            }
         }
+    }
 
 
 }
