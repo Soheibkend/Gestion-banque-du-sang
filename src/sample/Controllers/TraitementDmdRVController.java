@@ -22,6 +22,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -69,6 +71,88 @@ public class TraitementDmdRVController implements Initializable {
     	window.setScene(scene);
     	window.show();
     }
+    
+    @FXML
+    void supprimerRVAcc(ActionEvent event) {
+    	RVAcc rv = tabRVAcc.getSelectionModel().getSelectedItem();
+    	if(rv == null) {
+    		Alert alert = new Alert(Alert.AlertType.INFORMATION);
+             alert.setTitle("ERROR");
+             alert.setHeaderText(null);
+             alert.setContentText("Veuillez selectionner un R.V existant !!");
+             alert.showAndWait();
+    	} else {
+    		Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+             alert.setTitle("Information");
+             alert.setHeaderText(null);
+             alert.setContentText("Voulez vous réellement supprimer ce R.V ?");
+             alert.showAndWait();
+             
+             if(alert.getResult() == ButtonType.OK) {
+            	 try {
+					rs = stmt.executeQuery("delete from RVAcc where NumeroRV = '"+rv.getNumeroRV()+"'");
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+            	 
+            	 Alert alert2 = new Alert(Alert.AlertType.INFORMATION);
+	             alert2.setTitle("Information");
+	             alert2.setHeaderText(null);
+	             alert2.setContentText("Suppression faite avec succès !");
+	             alert2.showAndWait();
+	             
+	            Parent root = FXMLLoader.load(getClass().getResource("/sample/Views/TraitementDmdRV.fxml"));
+	 	    	Scene scene = new Scene(root);
+	 	    	
+	 	    	Stage window = (Stage) ((Node) ( event.getSource())).getScene().getWindow();
+	 	    	window.setScene(scene);
+	 	    	window.show();
+	             
+             }
+    	}
+
+    }
+
+    @FXML
+    void supprimerRVRefus(ActionEvent event) {
+    	RVRefus rv = tabRVRef.getSelectionModel().getSelectedItem();
+    	if(rv == null) {
+    		Alert alert = new Alert(Alert.AlertType.INFORMATION);
+             alert.setTitle("ERROR");
+             alert.setHeaderText(null);
+             alert.setContentText("Veuillez selectionner un R.V existant !!");
+             alert.showAndWait();
+    	} else {
+    		Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+             alert.setTitle("Information");
+             alert.setHeaderText(null);
+             alert.setContentText("Voulez vous réellement supprimer ce R.V ?");
+             alert.showAndWait();
+             
+             if(alert.getResult() == ButtonType.OK) {
+            	 try {
+					rs = stmt.executeQuery("delete from RVRefus where NumeroRV = '"+rv.getNumeroRV()+"'");
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+            	 
+            	 Alert alert2 = new Alert(Alert.AlertType.INFORMATION);
+	             alert2.setTitle("Information");
+	             alert2.setHeaderText(null);
+	             alert2.setContentText("Suppression faite avec succès !");
+	             alert2.showAndWait();
+	             
+	            Parent root = FXMLLoader.load(getClass().getResource("/sample/Views/TraitementDmdRV.fxml"));
+	 	    	Scene scene = new Scene(root);
+	 	    	
+	 	    	Stage window = (Stage) ((Node) ( event.getSource())).getScene().getWindow();
+	 	    	window.setScene(scene);
+	 	    	window.show();
+	             
+             }
+    	}
+    }
+
 
 
 	@Override

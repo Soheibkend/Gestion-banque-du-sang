@@ -9,6 +9,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -66,6 +68,86 @@ public class TraitementDmdDonController implements Initializable {
     	Stage window = (Stage) ((Node) ( event.getSource())).getScene().getWindow();
     	window.setScene(scene);
     	window.show();
+    }
+    
+    @FXML
+    void supprimerDmdDonAcc(ActionEvent event) {
+    	DemandeSangAcc dmd = tabDmdDonAcc.getSelectionModel().getSelectedItem();
+    	if(dmd == null) {
+    		Alert alert = new Alert(Alert.AlertType.INFORMATION);
+             alert.setTitle("ERROR");
+             alert.setHeaderText(null);
+             alert.setContentText("Veuillez selectionner une demande de don existante !!");
+             alert.showAndWait();
+    	} else {
+    		Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+             alert.setTitle("Information");
+             alert.setHeaderText(null);
+             alert.setContentText("Voulez vous réellement supprimer cette demande ?");
+             alert.showAndWait();
+             
+             if(alert.getResult() == ButtonType.OK) {
+            	 try {
+					rs = stmt.executeQuery("delete from DemandeSangAcc where NumeroDemande = '"+dmd.getNumeroDemande()+"'");
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+            	 
+            	 Alert alert2 = new Alert(Alert.AlertType.INFORMATION);
+	             alert2.setTitle("Information");
+	             alert2.setHeaderText(null);
+	             alert2.setContentText("Suppression faite avec succès !");
+	             alert2.showAndWait();
+	             
+	            Parent root = FXMLLoader.load(getClass().getResource("/sample/Views/TraitementDmdDon.fxml"));
+	 	    	Scene scene = new Scene(root);
+	 	    	
+	 	    	Stage window = (Stage) ((Node) ( event.getSource())).getScene().getWindow();
+	 	    	window.setScene(scene);
+	 	    	window.show();
+	             
+             }
+    	}
+    }
+
+    @FXML
+    void supprimerDmdDonRefus(ActionEvent event) {
+    	DemandeSangRefus dmd = tabDmdDonRef.getSelectionModel().getSelectedItem();
+    	if(dmd == null) {
+    		Alert alert = new Alert(Alert.AlertType.INFORMATION);
+             alert.setTitle("ERROR");
+             alert.setHeaderText(null);
+             alert.setContentText("Veuillez selectionner une demande de don existante !!");
+             alert.showAndWait();
+    	} else {
+    		Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+             alert.setTitle("Information");
+             alert.setHeaderText(null);
+             alert.setContentText("Voulez vous réellement supprimer cette demande ?");
+             alert.showAndWait();
+             
+             if(alert.getResult() == ButtonType.OK) {
+            	 try {
+					rs = stmt.executeQuery("delete from DemandeSangRefus where NumeroDemande = '"+dmd.getNumeroDemande()+"'");
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+            	 
+            	 Alert alert2 = new Alert(Alert.AlertType.INFORMATION);
+	             alert2.setTitle("Information");
+	             alert2.setHeaderText(null);
+	             alert2.setContentText("Suppression faite avec succès !");
+	             alert2.showAndWait();
+	             
+	            Parent root = FXMLLoader.load(getClass().getResource("/sample/Views/TraitementDmdDon.fxml"));
+	 	    	Scene scene = new Scene(root);
+	 	    	
+	 	    	Stage window = (Stage) ((Node) ( event.getSource())).getScene().getWindow();
+	 	    	window.setScene(scene);
+	 	    	window.show();
+	             
+             }
+    	}
     }
 
 	@Override

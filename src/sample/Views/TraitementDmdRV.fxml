@@ -31,5 +31,7 @@
             <Font name="System Bold Italic" size="18.0" />
          </font>
       </Label>
+      <Button layoutX="121.0" layoutY="379.0" mnemonicParsing="false" onAction="#supprimerRVAcc" text="Supprimer RV Acceptee" />
+      <Button layoutX="520.0" layoutY="379.0" mnemonicParsing="false" onAction="#supprimerRVRefus" text="Supprimer RV Refusee" />
    </children>
 </AnchorPane>
