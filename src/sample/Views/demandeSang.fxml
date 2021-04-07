@@ -6,7 +6,10 @@
 
 <AnchorPane prefHeight="500.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controllers.DemandeSangController">
    <children>
-      <Button layoutX="37.0" layoutY="441.0" mnemonicParsing="false" onAction="#Retourner" text="Retour" />
+      <Button layoutX="37.0" layoutY="441.0" mnemonicParsing="false" onAction="#Retourner" style="-fx-background-color: #ec0101;" text="Retour">
+         <font>
+            <Font name="System Bold Italic" size="12.0" />
+         </font></Button>
       <TableView fx:id="TabDmdOrganisationDons" layoutX="265.0" layoutY="119.0" prefHeight="262.0" prefWidth="470.0">
         <columns>
           <TableColumn fx:id="Demandeur" prefWidth="100.00001525878906" text="Demande par" />
@@ -21,8 +24,14 @@
             <Font name="System Bold Italic" size="18.0" />
          </font>
       </Label>
-      <Button layoutX="383.0" layoutY="393.0" mnemonicParsing="false" onAction="#AccepterDmd" text="Accepter" />
-      <Button layoutX="537.0" layoutY="393.0" mnemonicParsing="false" onAction="#RefuserDmd" text="Refuser" />
+      <Button layoutX="383.0" layoutY="393.0" mnemonicParsing="false" onAction="#AccepterDmd" style="-fx-background-color: #16c79a;" text="Accepter">
+         <font>
+            <Font name="System Bold Italic" size="12.0" />
+         </font></Button>
+      <Button layoutX="537.0" layoutY="393.0" mnemonicParsing="false" onAction="#RefuserDmd" style="-fx-background-color: #fb743e;" text="Refuser">
+         <font>
+            <Font name="System Bold Italic" size="12.0" />
+         </font></Button>
       <Label layoutX="13.0" layoutY="61.0" text="Information demande organisation don :" />
       <Label layoutX="23.0" layoutY="122.0" text="Demande par :" />
       <Label layoutX="24.0" layoutY="304.0" text="Objectif :" />
@@ -32,8 +41,14 @@
       <TextField fx:id="demandeur" layoutX="107.0" layoutY="117.0" prefHeight="18.0" prefWidth="112.0" />
       <TextField fx:id="nomDestinataire" layoutX="129.0" layoutY="145.0" prefHeight="18.0" prefWidth="112.0" />
       <TextField fx:id="Objectif" layoutX="80.0" layoutY="302.0" prefHeight="41.0" prefWidth="150.0" />
-      <Button layoutX="121.0" layoutY="389.0" mnemonicParsing="false" onAction="#AjouterDmd" text="Ajouter Demande" />
-      <Button layoutX="375.0" layoutY="70.0" mnemonicParsing="false" onAction="#Rechercher" text="Rechercher" />
+      <Button layoutX="121.0" layoutY="389.0" mnemonicParsing="false" onAction="#AjouterDmd" style="-fx-background-color: #16c79a;" text="Ajouter Demande">
+         <font>
+            <Font name="System Bold Italic" size="12.0" />
+         </font></Button>
+      <Button layoutX="375.0" layoutY="70.0" mnemonicParsing="false" onAction="#Rechercher" style="-fx-background-color: #51c2d5;" text="Rechercher">
+         <font>
+            <Font name="System Bold Italic" size="12.0" />
+         </font></Button>
       <TextField fx:id="rechercheField" layoutX="463.0" layoutY="70.0" prefHeight="26.0" prefWidth="190.0" promptText="entrer le nom du demandeur" />
       <Label layoutX="23.0" layoutY="96.0" text="Numero Demande :" />
       <TextField fx:id="Control_num" layoutX="141.0" layoutY="92.0" prefHeight="18.0" prefWidth="112.0" />

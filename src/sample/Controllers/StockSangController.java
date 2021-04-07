@@ -12,7 +12,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import sample.Classes.SangStocke;
 import sample.DB.DBCONNECTION;
-
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;

@@ -6,7 +6,7 @@
 
 <AnchorPane prefHeight="472.0" prefWidth="746.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controllers.GestionStockController">
    <children>
-      <Pane prefHeight="128.0" prefWidth="747.0" style="-fx-background-color: #B22222;">
+      <Pane prefHeight="128.0" prefWidth="747.0" style="-fx-background-color: #1597bb;">
          <children>
             <Label layoutX="222.0" layoutY="29.0" text="Gestion Stock" textFill="WHITE">
                <font>
@@ -14,8 +14,17 @@
                </font>
             </Label>
          </children></Pane>
-      <Button layoutX="316.0" layoutY="179.0" mnemonicParsing="false" onAction="#stockSangButton" prefHeight="26.0" prefWidth="115.0" text="Stock sang" />
-      <Button layoutX="316.0" layoutY="245.0" mnemonicParsing="false" onAction="#stockSangPerime" text="Stock Sang Perime" />
-      <Button fx:id="retourButton" layoutX="316.0" layoutY="321.0" mnemonicParsing="false" onAction="#retourButtonClicked" prefHeight="26.0" prefWidth="115.0" text="Retour" />
+      <Button layoutX="311.0" layoutY="197.0" mnemonicParsing="false" onAction="#stockSangButton" prefHeight="30.0" prefWidth="125.0" style="-fx-border-color: #1597bb; -fx-border-width: 2;" text="Stock sang">
+         <font>
+            <Font name="System Bold Italic" size="12.0" />
+         </font></Button>
+      <Button layoutX="311.0" layoutY="273.0" mnemonicParsing="false" onAction="#stockSangPerime" style="-fx-border-color: #1597bb; -fx-border-width: 2;" text="Stock Sang Perime">
+         <font>
+            <Font name="System Bold Italic" size="12.0" />
+         </font></Button>
+      <Button fx:id="retourButton" layoutX="307.0" layoutY="343.0" mnemonicParsing="false" onAction="#retourButtonClicked" prefHeight="30.0" prefWidth="131.0" style="-fx-border-color: #1597bb; -fx-border-width: 2;" text="Retour">
+         <font>
+            <Font name="System Bold Italic" size="12.0" />
+         </font></Button>
    </children>
 </AnchorPane>

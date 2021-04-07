@@ -1,4 +1,4 @@
-package src.sample.Controllers;
+package sample.Controllers;
 
 import java.io.IOException;
 import java.net.URL;
@@ -59,8 +59,8 @@ public class TraitementDmdRVController implements Initializable {
 		private Statement stmt = null;
 		private ResultSet rs = null;
 		
-		private ObservableList<RVAcc> listeDmdRVAcc = FXCollections.observableArrayList();
-		private ObservableList<RVRefus> listeDmdRVRefus = FXCollections.observableArrayList();
+		private ObservableList<sample.Classes.RVAcc> listeDmdRVAcc = FXCollections.observableArrayList();
+		private ObservableList<sample.Classes.RVRefus> listeDmdRVRefus = FXCollections.observableArrayList();
 
     @FXML
     void Retourner(ActionEvent event) throws IOException {
@@ -73,7 +73,7 @@ public class TraitementDmdRVController implements Initializable {
     }
     
     @FXML
-    void supprimerRVAcc(ActionEvent event) {
+    void supprimerRVAcc(ActionEvent event) throws IOException{
     	RVAcc rv = tabRVAcc.getSelectionModel().getSelectedItem();
     	if(rv == null) {
     		Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -85,7 +85,7 @@ public class TraitementDmdRVController implements Initializable {
     		Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
              alert.setTitle("Information");
              alert.setHeaderText(null);
-             alert.setContentText("Voulez vous réellement supprimer ce R.V ?");
+             alert.setContentText("Voulez vous rï¿½ellement supprimer ce R.V ?");
              alert.showAndWait();
              
              if(alert.getResult() == ButtonType.OK) {
@@ -98,7 +98,7 @@ public class TraitementDmdRVController implements Initializable {
             	 Alert alert2 = new Alert(Alert.AlertType.INFORMATION);
 	             alert2.setTitle("Information");
 	             alert2.setHeaderText(null);
-	             alert2.setContentText("Suppression faite avec succès !");
+	             alert2.setContentText("Suppression faite avec succï¿½s !");
 	             alert2.showAndWait();
 	             
 	            Parent root = FXMLLoader.load(getClass().getResource("/sample/Views/TraitementDmdRV.fxml"));
@@ -114,7 +114,7 @@ public class TraitementDmdRVController implements Initializable {
     }
 
     @FXML
-    void supprimerRVRefus(ActionEvent event) {
+    void supprimerRVRefus(ActionEvent event) throws IOException{
     	RVRefus rv = tabRVRef.getSelectionModel().getSelectedItem();
     	if(rv == null) {
     		Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -126,7 +126,7 @@ public class TraitementDmdRVController implements Initializable {
     		Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
              alert.setTitle("Information");
              alert.setHeaderText(null);
-             alert.setContentText("Voulez vous réellement supprimer ce R.V ?");
+             alert.setContentText("Voulez vous rï¿½ellement supprimer ce R.V ?");
              alert.showAndWait();
              
              if(alert.getResult() == ButtonType.OK) {
@@ -139,7 +139,7 @@ public class TraitementDmdRVController implements Initializable {
             	 Alert alert2 = new Alert(Alert.AlertType.INFORMATION);
 	             alert2.setTitle("Information");
 	             alert2.setHeaderText(null);
-	             alert2.setContentText("Suppression faite avec succès !");
+	             alert2.setContentText("Suppression faite avec succï¿½s !");
 	             alert2.showAndWait();
 	             
 	            Parent root = FXMLLoader.load(getClass().getResource("/sample/Views/TraitementDmdRV.fxml"));
@@ -188,7 +188,7 @@ public class TraitementDmdRVController implements Initializable {
 			// requette pout recuperer la liste des demandes de sang de la BD
 			rs = stmt.executeQuery("select * from RVRefus");
 			while(rs.next()) {
-				listeDmdRVRefus.add(new RVRefus(rs.getInt("numeroRV"),rs.getString("nomDonneur"), rs.getString("GroupeSanguin"), rs.getDate("dateDemande").toLocalDate(), rs.getString("hopital"))
+				listeDmdRVRefus.add(new RVRefus(rs.getString("numeroRV"),rs.getString("nomDonneur"), rs.getString("GroupeSanguin"), rs.getString("dateDemande"), rs.getString("hopital"))
 						);
 			}
 		} catch (SQLException e) {

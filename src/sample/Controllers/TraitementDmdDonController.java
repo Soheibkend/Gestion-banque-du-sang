@@ -1,4 +1,4 @@
-package src.sample.Controllers;
+package sample.Controllers;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -71,7 +71,7 @@ public class TraitementDmdDonController implements Initializable {
     }
     
     @FXML
-    void supprimerDmdDonAcc(ActionEvent event) {
+    void supprimerDmdDonAcc(ActionEvent event) throws IOException{
     	DemandeSangAcc dmd = tabDmdDonAcc.getSelectionModel().getSelectedItem();
     	if(dmd == null) {
     		Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -83,7 +83,7 @@ public class TraitementDmdDonController implements Initializable {
     		Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
              alert.setTitle("Information");
              alert.setHeaderText(null);
-             alert.setContentText("Voulez vous réellement supprimer cette demande ?");
+             alert.setContentText("Voulez vous reellement supprimer cette demande ?");
              alert.showAndWait();
              
              if(alert.getResult() == ButtonType.OK) {
@@ -96,7 +96,7 @@ public class TraitementDmdDonController implements Initializable {
             	 Alert alert2 = new Alert(Alert.AlertType.INFORMATION);
 	             alert2.setTitle("Information");
 	             alert2.setHeaderText(null);
-	             alert2.setContentText("Suppression faite avec succès !");
+	             alert2.setContentText("Suppression faite avec succes !");
 	             alert2.showAndWait();
 	             
 	            Parent root = FXMLLoader.load(getClass().getResource("/sample/Views/TraitementDmdDon.fxml"));
@@ -111,7 +111,7 @@ public class TraitementDmdDonController implements Initializable {
     }
 
     @FXML
-    void supprimerDmdDonRefus(ActionEvent event) {
+    void supprimerDmdDonRefus(ActionEvent event) throws IOException{
     	DemandeSangRefus dmd = tabDmdDonRef.getSelectionModel().getSelectedItem();
     	if(dmd == null) {
     		Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -123,7 +123,7 @@ public class TraitementDmdDonController implements Initializable {
     		Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
              alert.setTitle("Information");
              alert.setHeaderText(null);
-             alert.setContentText("Voulez vous réellement supprimer cette demande ?");
+             alert.setContentText("Voulez vous reellement supprimer cette demande ?");
              alert.showAndWait();
              
              if(alert.getResult() == ButtonType.OK) {
@@ -136,7 +136,7 @@ public class TraitementDmdDonController implements Initializable {
             	 Alert alert2 = new Alert(Alert.AlertType.INFORMATION);
 	             alert2.setTitle("Information");
 	             alert2.setHeaderText(null);
-	             alert2.setContentText("Suppression faite avec succès !");
+	             alert2.setContentText("Suppression faite avec succes !");
 	             alert2.showAndWait();
 	             
 	            Parent root = FXMLLoader.load(getClass().getResource("/sample/Views/TraitementDmdDon.fxml"));
@@ -166,7 +166,7 @@ public class TraitementDmdDonController implements Initializable {
 			// requette pout recuperer la liste des demandes de sang Acceptee de la BD
 			rs = stmt.executeQuery("select * from DemandeSangAcc");
 			while(rs.next()) {
-				listeDmdDonAcc.add(new DemandeSangAcc(rs.getString("numeroDemande"),rs.getString("nomDemandeur"), rs.getString("nomDestinataire"), rs.getString("dateDemande"), rs.getString("GroupeSanguin"), rs.getString("NOMBRESAC"), rs.getString("REMARQUE"), rs.getString("Objectif"), rs.getString("dateAcc"))
+				listeDmdDonAcc.add(new DemandeSangAcc(rs.getString("numeroDemande"),rs.getString("nomDemandeur"), rs.getString("nomDestinataire"), rs.getString("dateDemande"), rs.getString("GroupeSanguin"), rs.getInt("NOMBRESAC"), rs.getString("REMARQUE"), rs.getString("Objectif"), rs.getString("dateAcc"))
 						);
 			}
 		} catch (SQLException e) {
@@ -183,14 +183,14 @@ public class TraitementDmdDonController implements Initializable {
 			// requette pout recuperer la liste des demandes de sang de la BD
 			rs = stmt.executeQuery("select * from DemandeSangRefus");
 			while(rs.next()) {
-				listeDmdDonRefus.add(new DemandeSangRefus(rs.getString("numeroDemande"),rs.getString("nomDemandeur"), rs.getString("nomDestinataire"), rs.getString("dateDemande"), rs.getString("GroupeSanguin"), rs.getString("NOMBRESAC"), rs.getString("REMARQUE"), rs.getString("Objectif"), rs.getString("dateRefus"))
+				listeDmdDonRefus.add(new DemandeSangRefus(rs.getString("numeroDemande"),rs.getString("nomDemandeur"), rs.getString("nomDestinataire"), rs.getString("dateDemande"), rs.getString("GroupeSanguin"), rs.getInt("NOMBRESAC"), rs.getString("REMARQUE"), rs.getString("Objectif"), rs.getString("dateRefus"))
 						);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} 
 		
-		col_numDmdRef.setCellValueFactory(new PropertyValueFactory<>("numeroRV"));
+		col_numDmdRef.setCellValueFactory(new PropertyValueFactory<>("numeroDemande"));
 		col_demandeurRef.setCellValueFactory(new PropertyValueFactory<>("nomDemandeur"));
 		col_dateDmdRef.setCellValueFactory(new PropertyValueFactory<>("dateRefus"));
 		

@@ -1,4 +1,4 @@
-package src.sample.Classes;
+package sample.Classes;
 
 import sample.Classes.RV;
 

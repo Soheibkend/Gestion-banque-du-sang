@@ -229,6 +229,7 @@ public class DemandeSangController implements Initializable {
  		}
  		
  		try {
+			Connection con = DBCONNECTION.getConnection();
  			// requette pout recuperer la liste des demandes de sang de la BD
  			rs = stmt.executeQuery("select * from DemandeSang");
  			while(rs.next()) {

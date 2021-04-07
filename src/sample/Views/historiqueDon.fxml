@@ -6,7 +6,7 @@
 
 <AnchorPane prefHeight="514.0" prefWidth="781.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controllers.HistoriqueDonControllers">
    <children>
-      <TableView fx:id="TableHistorique" layoutX="112.0" layoutY="192.0" prefHeight="278.0" prefWidth="571.0">
+      <TableView fx:id="TableHistorique" layoutX="105.0" layoutY="151.0" prefHeight="278.0" prefWidth="571.0">
         <columns>
           <TableColumn fx:id="nomDonneur" prefWidth="115.1999740600586" text="Nom Donneur" />
           <TableColumn fx:id="hopital" prefWidth="116.0" text="Hopital" />
@@ -15,14 +15,20 @@
             <TableColumn fx:id="nomMedecin" prefWidth="110.00006103515625" text="Nom Medecin" />
         </columns>
       </TableView>
-      <TextField fx:id="rechercheField" layoutX="246.0" layoutY="138.0" prefHeight="26.0" prefWidth="161.0" promptText="Entrer le nom du donneur" />
+      <TextField fx:id="rechercheField" layoutX="246.0" layoutY="102.0" prefHeight="26.0" prefWidth="161.0" promptText="Entrer le nom du donneur" />
       <Label layoutX="229.0" layoutY="23.0" text="Historique des dons">
          <font>
             <Font name="System Bold Italic" size="35.0" />
          </font>
       </Label>
       <Label layoutX="292.0" layoutY="142.0" />
-      <Button layoutX="458.0" layoutY="138.0" mnemonicParsing="false" onAction="#rechercheButttonClicked" text="Rechercher" />
-      <Button layoutX="22.0" layoutY="36.0" mnemonicParsing="false" onAction="#retourButtonClicked" text="Retour" />
+      <Button layoutX="458.0" layoutY="102.0" mnemonicParsing="false" onAction="#rechercheButttonClicked" style="-fx-background-color: #51c2d5;" text="Rechercher">
+         <font>
+            <Font name="System Bold Italic" size="12.0" />
+         </font></Button>
+      <Button layoutX="36.0" layoutY="459.0" mnemonicParsing="false" onAction="#retourButtonClicked" prefHeight="26.0" prefWidth="62.0" style="-fx-background-color: #ec0101;" text="Retour">
+         <font>
+            <Font name="System Bold Italic" size="12.0" />
+         </font></Button>
    </children>
 </AnchorPane>

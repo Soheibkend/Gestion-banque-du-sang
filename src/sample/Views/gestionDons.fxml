@@ -4,9 +4,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="526.0" prefWidth="770.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controllers.GestionDonController">
+<AnchorPane prefHeight="620.0" prefWidth="770.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controllers.GestionDonController">
    <children>
-      <Pane prefHeight="141.0" prefWidth="770.0" style="-fx-background-color: #B22222;">
+      <Pane prefHeight="141.0" prefWidth="770.0" style="-fx-background-color: #1597bb;">
          <children>
             <Label layoutX="244.0" layoutY="35.0" text="Gestion des dons" textFill="WHITE">
                <font>
@@ -15,10 +15,29 @@
             </Label>
          </children>
       </Pane>
-      <Button layoutX="310.0" layoutY="281.0" mnemonicParsing="false" onAction="#demandeSangButtonClicked" prefHeight="26.0" prefWidth="135.0" text="Demande du Sang" />
-      <Button layoutX="310.0" layoutY="343.0" mnemonicParsing="false" onAction="#listeRVButtonClicked" text="Liste des Rendez-Vous" />
-      <Button layoutX="310.0" layoutY="404.0" mnemonicParsing="false" onAction="#historiqueButtonClicked" prefHeight="26.0" prefWidth="135.0" text="Historique des dons" />
-      <Button fx:id="retourButton" layoutX="310.0" layoutY="471.0" mnemonicParsing="false" onAction="#retourButtonClicked" prefHeight="26.0" prefWidth="135.0" text="Retour" />
-      <Button layoutX="310.0" layoutY="219.0" mnemonicParsing="false" onAction="#ajouterDonButtonClicked" prefHeight="26.0" prefWidth="135.0" text="Ajouter Don" />
+      <Button layoutX="310.0" layoutY="281.0" mnemonicParsing="false" onAction="#demandeSangButtonClicked" prefHeight="26.0" prefWidth="151.0" style="-fx-border-color: #1597bb; -fx-border-width: 2;" text="Demande du Sang">
+         <font>
+            <Font name="System Bold Italic" size="12.0" />
+         </font></Button>
+      <Button layoutX="310.0" layoutY="343.0" mnemonicParsing="false" onAction="#listeRVButtonClicked" prefHeight="26.0" prefWidth="151.0" style="-fx-border-color: #1597bb; -fx-border-width: 2;" text="Liste des Rendez-Vous">
+         <font>
+            <Font name="System Bold Italic" size="12.0" />
+         </font></Button>
+      <Button layoutX="310.0" layoutY="404.0" mnemonicParsing="false" onAction="#historiqueButtonClicked" prefHeight="26.0" prefWidth="151.0" style="-fx-border-color: #1597bb; -fx-border-width: 2;" text="Historique des dons">
+         <font>
+            <Font name="System Bold Italic" size="12.0" />
+         </font></Button>
+      <Button fx:id="retourButton" layoutX="306.0" layoutY="542.0" mnemonicParsing="false" onAction="#retourButtonClicked" prefHeight="26.0" prefWidth="158.0" style="-fx-border-color: #1597bb; -fx-border-width: 2;" text="Retour">
+         <font>
+            <Font name="System Bold Italic" size="12.0" />
+         </font></Button>
+      <Button layoutX="310.0" layoutY="219.0" mnemonicParsing="false" onAction="#ajouterDonButtonClicked" prefHeight="26.0" prefWidth="151.0" style="-fx-border-color: #1597bb; -fx-border-width: 2;" text="Ajouter Don">
+         <font>
+            <Font name="System Bold Italic" size="12.0" />
+         </font></Button>
+      <Button layoutX="306.0" layoutY="477.0" mnemonicParsing="false" onAction="#traitementButtonClicked" prefHeight="26.0" prefWidth="158.0" style="-fx-border-color: #1597bb; -fx-border-width: 2;" text="Traitement des Requetes">
+         <font>
+            <Font name="System Bold Italic" size="12.0" />
+         </font></Button>
    </children>
 </AnchorPane>
