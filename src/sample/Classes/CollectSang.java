@@ -1,5 +1,7 @@
 package sample.Classes;
 
+import java.util.Date;
+
 public class CollectSang {
 
     String nomDonateur;

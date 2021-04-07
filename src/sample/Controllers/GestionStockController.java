@@ -27,7 +27,7 @@ public class GestionStockController {
     public void stockSangPerime (ActionEvent event) throws IOException{
         Stage stage = (Stage) retourButton.getScene().getWindow();
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("/sample/Views/sample.fxml"));
+        loader.setLocation(getClass().getResource("/sample/Views/stockSangPerime.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
         stage.setScene(scene);

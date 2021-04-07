@@ -7,7 +7,9 @@ import sample.Classes.CollectSang;
 import sample.Classes.SangStocke;
 
 import java.sql.*;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 //"DESKTOP-HHPM41M"
 public class DBCONNECTION {
@@ -63,7 +65,8 @@ public class DBCONNECTION {
     public static void addDon (String nomDonneur,String groupeSanguin , String hopital, String nomMedecin) {
         try {
             Connection con = getConnection();
-            statement.executeQuery("INSERT INTO COLLECTSANG"+" Values ('" +nomDonneur + "','"+hopital+"','"+ groupeSanguin+ "','"+ nomMedecin+"','"+ LocalDate.now().toString() +"')");
+
+            statement.executeQuery("INSERT INTO COLLECTSANG"+" Values ('" +nomDonneur + "','"+hopital+"','"+ groupeSanguin+ "','"+ nomMedecin+"','"+ LocalDate.now().toString()+"')");
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -104,6 +107,23 @@ public class DBCONNECTION {
             Connection con = getConnection();
             ObservableList<SangStocke> Liste = FXCollections.observableArrayList();
             rs = statement.executeQuery("Select * FROM SANGSTOCKE ");
+            while (rs.next()) {
+                Liste.add(new SangStocke(rs.getString("GROUPESANGUIN"), rs.getInt("NUMEROSAC"), rs.getString("DATECOLLECTION"), rs.getString("HOPITAL")));
+            }
+            return Liste;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+
+    public static ObservableList<SangStocke> getListeSangPerime () {
+        try {
+            Connection con = getConnection();
+            ObservableList<SangStocke> Liste = FXCollections.observableArrayList();
+
+            rs = statement.executeQuery("Select * FROM SANGSTOCKE WHERE SYSDATE >= TO_DATE( DATECOLLECTION, 'YYYY-MM-DD')+ 45");
             while (rs.next()) {
                 Liste.add(new SangStocke(rs.getString("GROUPESANGUIN"), rs.getInt("NUMEROSAC"), rs.getString("DATECOLLECTION"), rs.getString("HOPITAL")));
             }

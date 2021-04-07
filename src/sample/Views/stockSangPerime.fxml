@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="418.0" prefWidth="701.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controllers.StockSangPerimeController">
+   <children>
+      <Label layoutX="242.0" layoutY="24.0" text="Stock Sang Perime">
+         <font>
+            <Font name="System Bold Italic" size="25.0" />
+         </font>
+      </Label>
+      <TableView fx:id="tableSangPerime" layoutX="95.0" layoutY="109.0" prefHeight="217.0" prefWidth="511.0">
+        <columns>
+          <TableColumn fx:id="numeroSac" prefWidth="91.20001220703125" text="Numero Sac" />
+          <TableColumn fx:id="GroupeSanguin" prefWidth="123.79997253417969" text="Groupe Sanguin" />
+            <TableColumn fx:id="dateCollection" prefWidth="135.5999755859375" text="Date Collection" />
+            <TableColumn fx:id="hopital" prefWidth="157.99996948242188" text="Hopital" />
+        </columns>
+      </TableView>
+      <Button fx:id="retourButton" layoutX="25.0" layoutY="363.0" mnemonicParsing="false" onAction="#retourButtonClicked" prefHeight="26.0" prefWidth="64.0" text="Retour" />
+   </children>
+</AnchorPane>

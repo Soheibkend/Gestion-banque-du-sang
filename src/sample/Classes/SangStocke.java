@@ -1,5 +1,7 @@
 package sample.Classes;
 
+import java.sql.Date;
+
 public class SangStocke {
 
     int numeroSac;
